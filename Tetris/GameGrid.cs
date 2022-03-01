@@ -6,29 +6,57 @@
         public int Rows { get; }
         public int Columns { get; }
 
-        public int this[int rows, int columns]
+        public int this[int r, int c]
         {
-            get => grid[rows, columns];
-            set => grid[rows, columns] = value;
+            get => grid[r, c];
+            set => grid[r, c] = value;
         }
 
         public GameGrid(int rows, int columns)
         {
-            this.Rows = rows;
-            this.Columns = columns;
+            Rows = rows;
+            Columns = columns;
             grid = new int[rows, columns];
         }
 
-        public bool IsInside(int rows, int columns)
+        #region Methods
+
+        public bool IsInside(int r, int c)
         {
-            return rows >= 0 && rows < this.Rows &&
-                columns >= 0 && columns < this.Columns;
+            return (r >= 0 && r < Rows) && (c >= 0 && c < Columns);
         }
 
-        public bool IsEmpty(int rows, int columns)
+        public bool IsEmpty(int r, int c)
         {
-            return IsInside(rows, columns) &&
-                grid[rows, columns] == 0;
+            return IsInside(r, c) && grid[r, c] == 0;
         }
+
+        public bool IsRowFull(int r)
+        {
+            for (int c = 0; c < Columns; c++)
+            {
+                if (grid[r, c] == 0)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        public bool IsRowEmpty(int r)
+        {
+            for (int c = 0; c < Columns; c++)
+            {
+                if (grid[r, c] != 0)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        #endregion
     }
 }
