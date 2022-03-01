@@ -18,5 +18,11 @@
             this.Columns = columns;
             grid = new int[rows, columns];
         }
+
+        public bool IsInside(int rows, int columns)
+        {
+            return rows >= 0 && rows < this.Rows &&
+                columns >= 0 && columns < this.Columns;
+        }
     }
 }
