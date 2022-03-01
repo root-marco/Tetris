@@ -24,5 +24,11 @@
             return rows >= 0 && rows < this.Rows &&
                 columns >= 0 && columns < this.Columns;
         }
+
+        public bool IsEmpty(int rows, int columns)
+        {
+            return IsInside(rows, columns) &&
+                grid[rows, columns] == 0;
+        }
     }
 }
