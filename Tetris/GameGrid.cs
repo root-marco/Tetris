@@ -11,5 +11,12 @@
             get => grid[rows, columns];
             set => grid[rows, columns] = value;
         }
+
+        public GameGrid(int rows, int columns)
+        {
+            this.Rows = rows;
+            this.Columns = columns;
+            grid = new int[rows, columns];
+        }
     }
 }
