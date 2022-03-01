@@ -19,8 +19,6 @@
             grid = new int[rows, columns];
         }
 
-        #region Methods
-
         public bool IsInside(int r, int c)
         {
             return (r >= 0 && r < Rows) && (c >= 0 && c < Columns);
@@ -57,6 +55,21 @@
             return true;
         }
 
-        #endregion
+        private void ClearRow(int r)
+        {
+            for (int c = 0; c < Columns; c++)
+            {
+                grid[r, c] = 0;
+            }
+        }
+
+        private void MoveRowDown(int r, int numRows)
+        {
+            for (int c = 0; c < Columns; c++)
+            {
+                grid[r + numRows, c] = grid[r, c];
+                grid[r, c] = 0;
+            }
+        }
     }
 }
