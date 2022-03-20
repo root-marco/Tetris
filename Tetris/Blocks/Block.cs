@@ -1,6 +1,6 @@
 ﻿namespace Tetris
 {
-    internal abstract class Block
+    public abstract class Block
     {
         protected abstract Position[][] Tiles { get; }
         protected abstract Position StartOffset { get; }
@@ -8,5 +8,10 @@
 
         private int rotationState;
         private Position offset;
+
+        public Block ()
+        {
+            offset = new Position(StartOffset.Row, StartOffset.Column);
+        }
     }
 }
